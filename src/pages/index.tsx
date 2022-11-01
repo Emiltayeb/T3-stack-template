@@ -2,11 +2,9 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
-import { getServerAuthSession } from "../server/common/get-server-auth-session";
 
-const Home: NextPage = (props) => {
-  // const hello = trpc.example.getAll.useQuery();
-  console.log(props);
+const Home: NextPage = () => {
+
   return (
     <>
       <Head>
