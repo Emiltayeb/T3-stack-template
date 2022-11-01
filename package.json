@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "dotenv -e  .env.local --  next dev",
     "postinstall": "prisma generate",
+    "prod": "dotenv -e .env.development  --  next dev ",
+    "migrate-prod": "dotenv -e .env.development  --  npx prisma db push ",
     "lint": "next lint",
     "start": "next start"
   },
@@ -31,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "autoprefixer": "^10.4.7",
+    "dotenv-cli": "^6.0.0",
     "eslint": "8.22.0",
     "eslint-config-next": "13.0.0",
     "postcss": "^8.4.14",
