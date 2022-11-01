@@ -2,12 +2,12 @@ import NextAuth, { type NextAuthOptions } from "next-auth";
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
-import { env } from "../../../env/server.mjs";
+
 import { prisma } from "../../../server/db/client";
 
 export const authOptions: NextAuthOptions = {
   session: {
-    strategy: "jwt",
+    maxAge: 24 * 60 * 60, // 1 day
   },
   secret: process.env.NEXTAUTH_SECRET,
   // Include user.id on session
