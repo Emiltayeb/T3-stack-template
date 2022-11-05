@@ -1,3 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-media --mobile (width < 320px);
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:root {
+  --mainColor: red;
+}
+body {
+  color: var(--mainColor);
+  font-family: system-ui;
+  overflow-wrap: break-word;
+}
+:--heading {
+  font-weight: normal;
+  @media (--viewport-medium) {
+    font-weight: bold;;
+  }
+}

@@ -1,5 +1,5 @@
-import type { NextPage } from "next";
+import type { NextPage } from 'next';
 
-  export type  ProtectedPage  =   {
-    auth?:boolean
-  } & NextPage 
+export type ProtectedPage = {
+  auth?: boolean;
+} & NextPage;

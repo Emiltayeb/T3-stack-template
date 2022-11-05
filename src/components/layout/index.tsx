@@ -5,7 +5,7 @@ type LayoutProps = {
 }
 const Layout  = function (props:LayoutProps) {
   return (
-    <div className="container mx-auto min-h-screen  p-4">
+    <div className="container  mx-auto min-h-screen  p-4">
       {props.children}
     </div>
   );

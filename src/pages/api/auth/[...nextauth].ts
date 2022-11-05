@@ -1,31 +1,23 @@
-import NextAuth, { type NextAuthOptions } from "next-auth";
+import NextAuth, { type NextAuthOptions } from 'next-auth';
 // Prisma adapter for NextAuth, optional and can be removed
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import GoogleProvider from "next-auth/providers/google";
-
-import { prisma } from "../../../server/db/client";
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import Spotify from 'next-auth/providers/spotify';
+import { prisma } from '../../../server/db/client';
 
 export const authOptions: NextAuthOptions = {
   session: {
-    maxAge: 24 * 60 * 60, // 1 day
+    maxAge: 24 * 60 * 60, // 1 hour
+    strategy: 'jwt',
   },
   secret: process.env.NEXTAUTH_SECRET,
-  // Include user.id on session
-  callbacks: {},
-  // Configure one or more authentication providers
   adapter: PrismaAdapter(prisma),
-
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
+    Spotify({
+      clientId: process.env.SPOTIFY_ID as string,
+      clientSecret: process.env.SPOTIFY_SECRET as string,
+      authorization: 'https://accounts.spotify.com/authorize?scope=user-read-email',
+      token: 'https://accounts.spotify.com/api/token',
+      userinfo: 'https://api.spotify.com/v1/me',
     }),
     // ...add more providers here
   ],
