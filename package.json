@@ -12,7 +12,6 @@
     "build": "next build",
     "dev": "dotenv -e  .env.local --  next dev",
     "postinstall": "prisma generate",
-    "prod": "dotenv -e .env.development  --  next dev ",
     "migrate-prod": "dotenv -e .env.development  --  npx prisma db push ",
     "migrate-dev": "dotenv -e .env.local -- npx prisma migrate dev",
     "lint": "next lint",

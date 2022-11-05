@@ -2,7 +2,7 @@
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 :root {
-  --mainColor: red;
+  --mainColor: teal;
 }
 body {
   color: var(--mainColor);
@@ -11,7 +11,8 @@ body {
 }
 :--heading {
   font-weight: normal;
+  font-size: 1.5rem;
   @media (--viewport-medium) {
-    font-weight: bold;;
+    font-weight: bold;
   }
 }
